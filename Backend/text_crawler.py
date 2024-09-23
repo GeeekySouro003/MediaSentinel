@@ -13,5 +13,21 @@ async def scrape_ndtv_archive(news_source:str,selected_date:str,source_url:str,m
                 ndtv_soup=BeautifulSoup(await response.text(),"html.parser")
                 article_links = ndtv_soup.find("div",id = "main-content")
                 
+                article_data=[
+                    
+                    {
+                        "id":index,
+                        "source":news_source,
+                        "publication_date":selected_date,
+                        "link": link["href"],
+                        "title": link.text.strip(),
+                        "text": None,
+                        "tone" : None,
+                        "government_body": None
+                        
+                        
+                    }
+                ]
+                
                 
                 
