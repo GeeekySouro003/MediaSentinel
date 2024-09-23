@@ -39,6 +39,7 @@ async def scrape_ndtv_archive(news_source:str,selected_date:str,source_url:str,m
                 
                 
                 tasks= [
+                    fetch_article_content()
                     for index,article in enumerate(article_data,start=1)
                 ]
                     
