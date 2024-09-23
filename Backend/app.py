@@ -14,7 +14,7 @@ media_outlets = {
     "Mathrubhumi": ["Malayalam", "mal"],
     "Eenadu": ["Telugu", "tel"]
 }
-
+    
 
 
 @app.route("/api", methods = ["POST"])
