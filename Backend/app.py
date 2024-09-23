@@ -16,6 +16,8 @@ def process_data() -> str:
     if news_source == "NDTV":
         source_url=f"https://archives.ndtv.com/articles/{selected_date}.html"
         max_articles_to_scrape=500
+        
+        asyncio.run(scrape_ndtv_archive(news_source,selected_date,source_url,max_articles_to_scrape)
 
 if __name__ == "__main__":
     app.run()
