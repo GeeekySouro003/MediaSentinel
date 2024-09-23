@@ -7,7 +7,21 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 
+media_outlets = {
+    "Dainik Jagran": ["Hindi", "hin"],
+    "Prajavani": ["Kannada", "kan"],
+    "Dinamalar": ["Tamil", "tam"],
+    "Mathrubhumi": ["Malayalam", "mal"],
+    "Eenadu": ["Telugu", "tel"]
+}
+
+
+
 @app.route("/api", methods = ["POST"])
+
+
+
+
 
 def process_data() -> str:
     news_source=request.json("news_source")
