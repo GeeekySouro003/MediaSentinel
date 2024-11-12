@@ -281,7 +281,7 @@ export default ({
                     }}
                     onClick={() => {
                       window.open(
-                        "https://github.com/areebahmeddd/Insight-Ink",
+                        "https://github.com/GeeekySouro003/MediaSentinel",
                         "_blank",
                         "noreferrer"
                       );
