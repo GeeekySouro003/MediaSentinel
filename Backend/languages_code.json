@@ -1,0 +1,21 @@
+{
+    "language": ["google-trans", "tesseract"],
+    "Hindi": ["hi", "hin"],
+    "Urdu": ["ur", "urd"],
+    "Punjabi": ["pa", "pan"],
+    "Gujarati": ["gu", "guj"],
+    "Marathi": ["mr", "mar"],
+    "Telugu": ["te", "tel"],
+    "Kannada": ["kn", "kan"],
+    "Malayalam": ["ml", "mal"],
+    "Tamil": ["ta", "tam"],
+    "Odia": ["or", "ori"],
+    "Bengali": ["bn", "ben"],
+    "Assamese": ["as", "asm"],
+    "Manipuri": ["mni", "mni"],
+    "Konkani": ["kok", "kok"],
+    "Sanskrit": ["sa", "san"],
+    "Maithili": ["mai", "mai"],
+    "Bodo": ["brx", "brx"],
+    "Dogri": ["doi", "doi"]
+}
