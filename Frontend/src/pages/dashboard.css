@@ -1,0 +1,18 @@
+.dashboard-container {
+  display: flex; /* Use flexbox to arrange navbar and content side by side */
+}
+
+.navbar {
+  transition: width 0.3s; /* Add a transition for smooth expansion/collapse */
+}
+
+.section {
+  flex-grow: 1; /* Allow the section to grow and take up remaining space */
+  padding: 20px 40px;
+  margin-left: 50px;
+  transition: margin-left 0.3s; /* Add a transition for smooth push effect */
+}
+
+.section.pushed {
+  margin-left: 230px; /* Adjust the margin when navbar is expanded */
+}
