@@ -42,6 +42,8 @@
 # dataframe["cleaned_text"] = dataframe["text"].apply(preprocess_text)
 # sparse_matrix = vectorizer.fit_transform(dataframe["cleaned_text"])
 
+##NEW APPROACH USING BERT TOKENIZER
+
 import os
 import string
 import re
@@ -50,54 +52,28 @@ import nltk
 import pandas as pd
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import SVC
 
 # Ensure that NLTK resources are downloaded
 nltk.download("stopwords")
 nltk.download("punkt")
 nltk.download("wordnet")
 
-# Define relative paths for the model and vectorizer
-model_path = r'Backend\Models\Department\SupportVectorMachine.pkl'
-vectorizer_path = r'Backend\Models\Department\TfidfVectorizer.pkl'
-
-# Print absolute paths for debugging
-print("Absolute path to SupportVectorMachine.pkl:", os.path.abspath(model_path))
-print("Absolute path to TfidfVectorizer.pkl:", os.path.abspath(vectorizer_path))
-
-# Load the trained SVM model
-trained_model = joblib.load(model_path)
-
-# Load the vectorizer (if it exists)
-try:
-    vectorizer = joblib.load(vectorizer_path)
-    print("Vectorizer loaded successfully!")
-except FileNotFoundError as e:
-    print(f"Error loading vectorizer: {e}")
-    # Handle the error: retrain the vectorizer or raise an exception
-    # For now, we will proceed with the error handling
+# Define absolute paths for the model and vectorizer
+model_path = 'D:\\FinalYear\\MediaSentinel\\Backend\\Models\\Department\\SupportVectorMachine.pkl'
+vectorizer_path = 'D:\\FinalYear\\MediaSentinel\\Backend\\Models\\Department\\TfidfVectorizer.pkl'
 
 # Set pandas option for better column display
 pd.set_option("max_colwidth", 500)
 
 # Load dataset
-dataframe = pd.read_csv(r'Backend\Models\data-1.csv', usecols=["department", "text"])
+dataframe = pd.read_csv('D:\\FinalYear\\MediaSentinel\\Backend\\Models\\data-1.csv', usecols=["department", "text"])
 
 # Set of common stopwords
 common_words = set(stopwords.words("english"))
 lemmatizer = nltk.WordNetLemmatizer()
 
 # Text preprocessing function
-def categorize_department(text: str) -> str:
-    """
-    Given text, preprocess it and predict the department.
-    """
-    cleaned_text = preprocess_text(text)
-    # Transform the cleaned text into the vectorized form
-    processed_text = vectorizer.transform([cleaned_text])
-    # Predict the department using the trained model
-    predicted_department = trained_model.predict(processed_text)[0]
-    return predicted_department
-
 def preprocess_text(raw_text: str) -> str:
     """
     Preprocess the input text: lowercasing, removing punctuation, tokenizing, and lemmatizing.
@@ -115,13 +91,36 @@ def preprocess_text(raw_text: str) -> str:
 # Clean the text column and apply preprocessing
 dataframe["cleaned_text"] = dataframe["text"].apply(preprocess_text)
 
-# Use the vectorizer to transform the cleaned text
-sparse_matrix = vectorizer.transform(dataframe["cleaned_text"])
+# Step 1: Train a new TfidfVectorizer
+vectorizer = TfidfVectorizer()
+sparse_matrix = vectorizer.fit_transform(dataframe["cleaned_text"])
 
-# Optionally save the fitted vectorizer for later use (this step is optional if you're not retraining it)
+# Step 2: Save the trained vectorizer for later use
 joblib.dump(vectorizer, vectorizer_path)
 
-# If you want to perform predictions:
+# Step 3: Train the SVM model
+model = SVC(kernel='linear')
+model.fit(sparse_matrix, dataframe["department"])
+
+# Step 4: Save the trained model
+joblib.dump(model, model_path)
+
+# Now, we can proceed with prediction using the newly trained model and vectorizer
+
+# Function to categorize department using the trained model
+def categorize_department(text: str) -> str:
+    """
+    Given text, preprocess it and predict the department.
+    """
+    cleaned_text = preprocess_text(text)
+    # Transform the cleaned text into the vectorized form
+    processed_text = vectorizer.transform([cleaned_text])
+    # Predict the department using the trained model
+    predicted_department = model.predict(processed_text)[0]
+    return predicted_department
+
+# Example prediction
 sample_text = "Sample text to classify"
 predicted_dep = categorize_department(sample_text) 
 print(f"Predicted Department: {predicted_dep}")
+
