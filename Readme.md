@@ -6,9 +6,6 @@ The system provides real-time notifications for negative articles and includes a
 
 ---
 
-<p align = "center">
-  <img width = "100%" src = "https://github.com/areebahmeddd/Insight-Ink/blob/main/Frontend/src/images/demo.gif">
-</p>
 
 ## Overview
 
