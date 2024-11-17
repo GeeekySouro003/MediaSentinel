@@ -11,7 +11,7 @@ from graph_generator import plot_sentiment_graph, plot_department_graph
 
 app = Flask(__name__)
 CORS(app, resources = {
-        r'/api/*': {"origins": ["http://localhost:3000", "https://insight-ink.org"]}
+        r'/api/*': {"origins": ["http://localhost:3000", ]}
     }
 )
 
