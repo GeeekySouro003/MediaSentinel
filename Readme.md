@@ -1,0 +1,82 @@
+# MediaSentinel
+
+The *MediaSentinel* project uses advanced data processing and machine learning techniques to monitor and analyze media content. The system includes an automated feedback system that crawls news articles, extracts text from e-papers using Optical Character Recognition (OCR), and analyzes YouTube videos through a public Application Programming Interface (API). It employs Natural Language Processing (NLP) for classifying articles into relevant departments and performing sentiment analysis.
+
+The system provides real-time notifications for negative articles and includes a user-friendly dashboard for data visualization. Additionally, a Chrome extension is available for real-time fake news detection.
+
+---
+
+<p align = "center">
+  <img width = "100%" src = "https://github.com/areebahmeddd/Insight-Ink/blob/main/Frontend/src/images/demo.gif">
+</p>
+
+## Overview
+
+<p align = "center">
+  <strong>Data Acquisition</strong>
+</p>
+
+- *Asynchronous Web Scraping*: Utilized [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/) library along with asynchronous libraries such as [aiohttp](https://docs.aiohttp.org/en/stable/) and [asyncio](https://docs.python.org/3/library/asyncio.html) to efficiently scrape articles from various national and regional media websites.
+
+- *Text Extraction* & *Language Translation*: Implemented Google's Optical Character Recognition engine ([Pytesseract](https://pytesseract.readthedocs.io/en/latest/)) to extract text from scanned or image-based regional newspaper articles and integrated [Google Translator](https://py-googletrans.readthedocs.io/en/latest/) API to translate the extracted text into English, supporting cross-language analysis.
+
+- *Video Content Breakdown*: Leveraged [OpenAI Whisper](https://platform.openai.com/docs/guides/speech-to-text) API for an in-depth analysis of closed captioning in YouTube videos from selected news channels, enhancing media monitoring capabilities.
+
+🗂️ Processed data is stored automatically in [JSON](https://docs.python.org/3/library/json.html) format with well-defined key-value pairs, ensuring compatibility for frontend integration and wider accessibility across various applications.
+
+---
+
+<p align = "center">
+  <strong>Data Analysis</strong>
+</p>
+
+- *Department Categorization*: Developed a machine learning model using the [Support Vector Machine](https://www.geeksforgeeks.org/support-vector-machine-algorithm/?ref=lbp) (SVM) algorithm, complemented by Natural Language Processing techniques like [Text Lemmatization](https://www.nltk.org/api/nltk.stem.WordNetLemmatizer.html?highlight=lemmatize) and [Term Frequency-Inverse Document Frequency](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer) (TF-IDF) vectorization, to analyze a [dataset](https://github.com/areebahmeddd/Insight-Ink/blob/main/Backend/Models/data-1.csv) comprising diverse government departments. The [test model](https://github.com/areebahmeddd/Insight-Ink/tree/main/Backend/Models/Department) achieved an accuracy of ~95%.
+
+- *Sentiment Analysis*: Trained a Bidirectional Encoder Representations [from Transformers](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) ([BERT](https://huggingface.co/docs/transformers/model_doc/bert)) model within the [PyTorch](https://pytorch.org/docs/stable/torch.html) framework, on a [dataset](https://github.com/areebahmeddd/Insight-Ink/blob/main/Backend/Models/data-2.csv) comprising articles classified as positive, neutral, and negative. The [test model](https://github.com/areebahmeddd/Insight-Ink/tree/main/Backend/Models/Sentiment) achieved an accuracy of ~81%, closely matching the ground truth labels.
+
+📊 [Matplotlib](https://matplotlib.org/stable/index.html) library is applied automatically to generate graphs to visually represent the correlation between government departments and the sentiment expressed in news articles, making it easier to identify trends, patterns, and areas of concern.
+
+---
+
+<p align = "center">
+  <strong>Data Presentation</strong>
+</p>
+
+- *Cross-Platform User Interface*: Designed a website using frameworks such as [React](https://react.dev/reference/react) and [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/), with integrated [SMTPlib](https://docs.python.org/3/library/smtplib.html) library and [Twilio](https://www.twilio.com/docs/sms) API for real-time notifications to government officials regarding negative articles, thereby improving the ability to monitor and respond proactively.
+
+
+## Getting Started
+
+Follow these steps to set up and run the MediaSentinel software on your local machine, or you can watch the [demo video](https://www.youtube.com/watch?v=GFApJyF8yc0).
+
+### Prerequisites
+
+- [Python 3.11.5](https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe)
+- [Node.js 18.18.0](https://nodejs.org/dist/v18.18.0/node-v18.18.0-x64.msi)
+
+### Installation
+
+1. Clone the repository to your local machine:
+  ```shell
+  git clone https://github.com/areebahmeddd/Insight-Ink.git
+
+2. Navigate to the project directory:
+cd Insight-Ink
+
+3. Create a virtual environment (optional but recommended):
+python -m venv .venv
+
+4. Activate the virtual environment:
+Windows:-.venv\Scripts\activate
+macOS and Linux:-source .venv/bin/activate
+
+5. Install the project dependencies:
+pip install -r requirements.txt
+npm install
+
+### Usage 
+1. Run the application and start the development server:
+python app.py
+npm start
+
+2. Access the application in your web browser by navigating to http://localhost:3000
