@@ -55,10 +55,10 @@ Follow these steps to set up and run the MediaSentinel software on your local ma
 
 1. Clone the repository to your local machine:
   ```shell
-  git clone https://github.com/areebahmeddd/Insight-Ink.git
+  git clone https://github.com/GeeekySouro003/MediaSentinel.git
 
 2. Navigate to the project directory:
-cd Insight-Ink
+cd MediaSentinel
 
 3. Create a virtual environment (optional but recommended):
 python -m venv .venv
