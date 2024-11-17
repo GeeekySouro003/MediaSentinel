@@ -1,5 +1,5 @@
 {
-  "name": "mediasentinel",
+  "name": "insight-ink",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -37,7 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "vercel-build": "react-scripts build"
+    "deploy": "yarn build && netlify deploy --prod --dir=build"
   },
   "eslintConfig": {
     "extends": "react-app",
