@@ -7,10 +7,11 @@ import pandas as pd
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-trained_model = joblib.load(r'Backend\Models\Department\SupportVectorMachine.pkl')
+trained_model = joblib.load('../Backend/Models/Department/SupportVectorMachine.pkl')
+
 
 pd.set_option("max_colwidth", 500)
-dataframe = pd.read_csv(r'Backend\Models\data-1.csv', usecols = ["department", "text"])
+dataframe = pd.read_csv('../Backend/Models/data-1.csv', usecols = ["department", "text"])
 
 common_words = set(stopwords.words("english"))
 lemmatizer = nltk.WordNetLemmatizer()

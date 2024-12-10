@@ -1,43 +1,37 @@
-import string
-import re
+import json
 
-import joblib
-import nltk
-import pandas as pd
-from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import TfidfVectorizer
+from googletrans import Translator
 
-trained_model = joblib.load(r'Backend\Models\Department\SupportVectorMachine.pkl')
+from sentiment_analyzer import analyze_sentiment
+from department_categorizer import categorize_department
 
-pd.set_option("max_colwidth", 500)
-dataframe = pd.read_csv(r'Backend\Models\data-1.csv', usecols = ["department", "text"])
+def perform_translation(news_source: str, extracted_text: tuple, json_file_path: str, language: str) -> None:
+    google_translator = Translator()
+    file_name = extracted_text[1]
+    extracted_lines = extracted_text[0].split("\n")
+    print(f'\nTranslating: {file_name}')
 
-common_words = set(stopwords.words("english"))
-lemmatizer = nltk.WordNetLemmatizer()
-vectorizer = TfidfVectorizer()
-
-def categorize_department(text: str) -> str:
-    cleaned_text = preprocess_text(text)
-    processed_text = vectorizer.transform([cleaned_text])
-    predicted_department = trained_model.predict(processed_text)[0]
-
-    return predicted_department
-
-
-def preprocess_text(raw_text: str) -> str:
-    raw_text = "".join([
-        character.lower()
-        for character in raw_text
-        if character not in string.punctuation
+    translated_text = " ".join([
+        google_translator.translate(str(line), src = language, dest = "en").text
+        for line in extracted_lines
+        if line is not None and line.strip() != ""
     ])
 
-    tokenized_text = " ".join([
-        lemmatizer.lemmatize(word)
-        for word in re.split(r'\W+', raw_text)
-        if word not in common_words
-    ])
+    print("Done ...")
+    print(f'\nSaving data to file: {json_file_path}')
 
-    return tokenized_text
+    article_data = {
+        "id": 1,
+        "source": news_source,
+        "publication_date": None,
+        "link": None,
+        "title": None,
+        "text": translated_text,
+        "tone": analyze_sentiment(translated_text),
+        "government-body": categorize_department(translated_text)
+    }
 
-dataframe["cleaned_text"] = dataframe["text"].apply(preprocess_text)
-sparse_matrix = vectorizer.fit_transform(dataframe["cleaned_text"])
+    with open(json_file_path, "w", encoding = "utf-8") as json_file:
+        json.dump(article_data, json_file, ensure_ascii = False, indent = 4)
+
+    print("Done ...")
