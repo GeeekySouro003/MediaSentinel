@@ -1,0 +1,156 @@
+/* Section for Our Team */
+.our__team {
+  padding-top: 0rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Title section */
+.team__content {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.team__content h6.subtitle {
+  font-size: 1.5rem;
+  color: #fefdfd;
+}
+
+.team__content h2 {
+  font-size: 2rem;
+  color: #333333;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.team__content h2 .highlight {
+  color: white;
+}
+
+/* Card Wrapper */
+.team__wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4.7rem;
+}
+
+/* Team Card */
+.team__item {
+  width: 20%;
+  background: #1F509A;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.team__item:hover {
+  transform: translateY(-10px);
+}
+
+/* Image Styling */
+.team__img {
+  width: 100%;
+  height: 200px;
+  background: #fff;
+  padding-top: 10px;
+  overflow: hidden;
+}
+
+.team__img img {
+  width: 100%;
+  height: 180px;
+  object-fit:contain;
+  transform: scale(1.1);
+}
+
+/* Team Details */
+.team__details {
+  padding: 20px 15px;
+}
+
+.team__details h4 {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.team__details p.description {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+/* Social Media Icons */
+.team__member-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.team__member-social span i {
+  padding: 5px;
+  background: #007bff;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.team__member-social span i:hover {
+  background: #0056b3;
+}
+
+/* Modal */
+.ReactModal__Content {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Styling */
+@media only screen and (max-width: 768px) {
+  .team__item {
+    width: 30%;
+  }
+
+  .team__content h2 {
+    font-size: 1.5rem;
+  }
+
+  .team__details h4 {
+    font-size: 1rem;
+  }
+
+  .team__details p {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .team__item {
+    width: 100%;
+  }
+
+  .team__content h2 {
+    font-size: 1.2rem;
+  }
+
+  .team__details h4 {
+    font-size: 1rem;
+  }
+
+  .team__details p {
+    font-size: 0.8rem;
+  }
+}

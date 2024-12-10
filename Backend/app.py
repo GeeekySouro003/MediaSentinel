@@ -33,7 +33,7 @@ def process_data() -> str:
         max_articles_to_scrape = 500
 
         asyncio.run(scrape_ndtv_archive(news_source, selected_date, source_url, max_articles_to_scrape))
-        with open(r'Frontend\src\english.json', "r", encoding = "utf-8") as json_file:
+        with open('Frontend\src\english.json', "r", encoding = "utf-8") as json_file:
             scraped_data = json.load(json_file)
 
         plot_sentiment_graph(scraped_data)
@@ -43,7 +43,7 @@ def process_data() -> str:
         source_language = media_outlets[news_source][0]
         image_file_path = rf'Backend\Assets\{media_outlets[news_source][1]}-1.jpg'
 
-        with open(r'Backend\language_codes.json', "r", encoding = "utf-8") as json_file:
+        with open('../Backend/languages_code.json', "r", encoding = "utf-8") as json_file:
             language_mappings = json.load(json_file)
 
         extracted_text = perform_ocr(image_file_path, language_mappings[source_language][1])
