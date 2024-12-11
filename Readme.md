@@ -79,7 +79,7 @@ npm start
 2. Access the application in your web browser by navigating to http://localhost:3000
 
 
-### Authors
+## Authors
 - [Souradip Dasgupta](https://github.com/GeeekySouro003)
 - [Shreemayee Saha](https://github.com/techieShreee)
 - [Abir Ghosh](https://github.com/Abir-101)
