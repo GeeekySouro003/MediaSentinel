@@ -1,9 +1,18 @@
 /* Section for Our Team */
 .our__team {
   padding-top: 0rem;
-  text-align: center;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:auto;
+  height: auto;
+}
+
+.team-container{
+  display: flex;
+  background-color: #b1d9f9;
+  padding: 15px;
+  width: auto;
 }
 
 /* Title section */
@@ -13,19 +22,22 @@
 }
 
 .team__content h6.subtitle {
-  font-size: 1.5rem;
-  color: #fefdfd;
+  font-size: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #001A6E;
 }
 
 .team__content h2 {
   font-size: 2rem;
-  color: #333333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #0c0a0a;
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
 
 .team__content h2 .highlight {
-  color: white;
+  color: #0c0a0a;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Card Wrapper */

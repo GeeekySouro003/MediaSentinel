@@ -11,33 +11,43 @@ const teamMembers = [
         name: 'Souradip Dasgupta',
         position: 'Backend and ML Platform Developer',
         linkedin: 'https://www.linkedin.com/in/souradip-dasgupta',
+        github:'https://github.com/GeeekySouro003',
+        twitter:'https://x.com/Souradip69'
     },
     {
         imgUrl: team02,
         name: 'Abir Ghosh',
         position: 'Frontend Developer',
+        linkedin:'https://www.linkedin.com/in/abir-ghosh-9aba6b2b9',
+        github:'https://github.com/Abir-101',
+        twitter:'https://x.com/ukeeldadu'
     },
     {
         imgUrl: team03,
         name: 'Shreemayee Saha',
         position: 'Frontend Developer and UI Designer',
+        linkedin:'https://www.linkedin.com/in/sahashreemayee/',
+        github:'https://github.com/techieShreee',
+        twitter:'https://x.com/Shreemayee25914'
     },
     {
         imgUrl: team04,
         name: 'Promit Guha Roy',
         position: 'Applied ML Developer',
+        linkedin:'https://www.linkedin.com/in/promitguharoy/',
+        github:'https://github.com/promit02'
     },
 ];
 
 const Team = () => {
     return (
         <section className="our__team">
-            <div className="container">
+            <div className="team-container">
                 <div className="team__content">
-                    <h6 className="subtitle">Our Team</h6>
+                    <h6 className="subtitle"><b>Our Team</b></h6>
                     <h2>
-                        Join With{' '}
-                        <span className="highlight">Our Team</span>
+                        Connect With{' '}
+                        <span className="highlight">Us</span>
                     </h2>
                     <div className="team__wrapper">
                         {teamMembers.map((item, index) => (
@@ -57,10 +67,14 @@ const Team = () => {
                                             </span>
                                         )}
                                         <span>
+                                            <a href={item.twitter} target='_blank' rel="noopener noreferrer">
                                             <i className="ri-twitter-line" />
+                                            </a>
                                         </span>
                                         <span>
-                                            <i className="ri-facebook-line" />
+                                            <a href={item.github} target="_blank" rel="noopener norefer">
+                                            <i className="ri-github-line" />
+                                            </a>
                                         </span>
                                     </div>
                                 </div>
