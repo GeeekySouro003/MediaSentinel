@@ -80,4 +80,7 @@ npm start
 
 
 ### Authors
--[Souradip Dasgupta](https://github.com/GeeekySouro003),-[Shreemayee Saha](https://github.com/techieShreee),-[Abir Ghosh](https://github.com/Abir-101),-[Promit Guha Roy](https://github.com/promit02)
+- [Souradip Dasgupta](https://github.com/GeeekySouro003)
+- [Shreemayee Saha](https://github.com/techieShreee)
+- [Abir Ghosh](https://github.com/Abir-101)
+- [Promit Guha Roy](https://github.com/promit02)
