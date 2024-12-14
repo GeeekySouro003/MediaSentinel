@@ -44,7 +44,8 @@ The system provides real-time notifications for negative articles and includes a
 
 ## Getting Started
 
-Follow these steps to set up and run the MediaSentinel software on your local machine, or you can watch the [demo video](https://www.youtube.com/watch?v=GFApJyF8yc0).
+Follow these steps to set up and run the MediaSentinel software on your local machine, 
+<!-- or you can watch the [demo video](https://www.youtube.com/watch?v=GFApJyF8yc0). -->
 
 ### Prerequisites
 
