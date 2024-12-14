@@ -8,6 +8,7 @@ import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useLocation } from "react-router-dom";
 import Charts from "components/charts/Charts";
+import Team from "../components/Ui/Team"; // Import the Team component
 import chartpic from "../sentiment_distribution.png";
 
 const StyledSideNav = styled(SideNav)`
@@ -25,7 +26,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     const { tableData } = location.state;
-
     setTableData(tableData);
   }, [location.state]);
 
@@ -37,8 +37,8 @@ const Dashboard = () => {
     switch (currentPage) {
       case "home":
         return <div style={{ color: "#000" }}>Home</div>;
-      case "info":
-        return <div style={{ color: "#000" }}>Info</div>;
+      case "about":
+        return <Team />; // Render the Team component here
       case "tables":
         return <SyncTable data={tableData} />;
       case "charts":
@@ -51,6 +51,23 @@ const Dashboard = () => {
         return <div style={{ color: "#000" }}>Settings</div>;
       default:
         return null;
+    }
+  };
+
+  const getTitle = () => {
+    switch (currentPage) {
+      case "home":
+        return "Home";
+      case "about":
+        return "About Us";
+      case "tables":
+        return "Tables";
+      case "charts":
+        return "Charts";
+      case "settings":
+        return "Settings";
+      default:
+        return "";
     }
   };
 
@@ -84,18 +101,18 @@ const Dashboard = () => {
               <NavText>Home</NavText>
             </NavItem>
             <NavItem
-              eventKey="info"
+              eventKey="about"
               onClick={() => {
-                handlePageChange("info");
+                handlePageChange("about");
               }}
             >
               <NavIcon>
                 <i
-                  className="fa fa-info-circle"
+                  className="fa fa-users"
                   style={{ fontSize: "1.75em" }}
                 />
               </NavIcon>
-              <NavText>Info</NavText>
+              <NavText>About Us</NavText>
             </NavItem>
             <NavItem
               eventKey="tables"
@@ -153,7 +170,7 @@ const Dashboard = () => {
 
       <section className={`section ${expanded ? "pushed" : ""}`}>
         <section className="section-content">
-          <div className="titleCenter">Dashboard</div>
+          <div className="titleCenter">{getTitle()}</div>
           <style jsx="true">
             {`
               .titleCenter {

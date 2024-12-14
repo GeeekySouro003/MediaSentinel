@@ -77,3 +77,10 @@ python app.py
 npm start
 
 2. Access the application in your web browser by navigating to http://localhost:3000
+
+
+### Authors
+- [Souradip Dasgupta](https://github.com/GeeekySouro003)
+- [Shreemayee Saha](https://github.com/techieShreee)
+- [Abir Ghosh](https://github.com/Abir-101)
+- [Promit Guha Roy](https://github.com/promit02)
