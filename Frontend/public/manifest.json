@@ -1,6 +1,6 @@
 {
-  "name": "Insight Ink - 360 AI News Feedback System",
-  "short_name": "Insight Ink",
+  "name": "MediaSentinel - 360 AI News Feedback System",
+  "short_name": "MediaSentinel",
   "start_url": "./",
   "display": "standalone",
   "theme_color": "#000000",
